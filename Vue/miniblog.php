@@ -43,15 +43,11 @@
     </section>
 
     <main>
-        <?php
-        // Afficher un message de bienvenue
-        if (isLoggedIn()) {
-            echo "<h1>Hello " . htmlspecialchars($_SESSION['user']) . " !</h1>";
-            echo "<h2>Recent Blogs</h2>";
-        } else {
-            echo "<h1>Hello Guest !</h1>";
-        }
-        ?>
+        <section class="recent_post">
+            <div class="big_text">Mes publications récentes</div>
+            <div class="big_text">Concernant les Himalaya</div>
+            <div class="big_text">Et tout ce qui touche à la montagne</div>
+        </section>
 
         <section class="blog_section">
             <?php $lastPosts = showThreePost(); ?>
