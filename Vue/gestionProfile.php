@@ -20,6 +20,9 @@
 
         <p class="profileDetails"></p><br>
         <span class="details">Nom : <?php echo $_SESSION['nom']?></span>
+        
+        <a href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a>
+
 
         <h2>Modifier la photo de profil</h2>
         <form action="gestionProfile.php?action=upload" method="POST" enctype="multipart/form-data">
