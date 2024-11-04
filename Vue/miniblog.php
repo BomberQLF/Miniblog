@@ -12,10 +12,11 @@
 <body>
     <section class="hero_section">
         <header>
-            <div class="logo">
-                <img src="path-to-logo.png" alt="Logo">
-            </div>
-
+            <?php if (isLoggedIn()):?>
+                <div class="logo">
+                    <img src="path-to-logo.png" alt="Logo">
+                </div>
+            <?php endif;?>
             <nav>
                 <ul>
                     <li><a href="/Miniblog/Controller/index.php?action=home">Home</a></li>
@@ -40,10 +41,6 @@
                 </ul>
             </div>
         </header>
-
-        <div class="title">
-            <h1>Altitude 360</h1>
-        </div>
     </section>
 
     <main>
