@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -5,7 +7,7 @@
 }
 
 :root {
-    --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-stack: 'Montserrat', sans-serif;
     --primary-color: #1c1c1c; /* Dark background color */
     --secondary-color: #f0f0f0; /* Off-white text color */
     --accent-color: #888888; /* Gray for borders and accents */
