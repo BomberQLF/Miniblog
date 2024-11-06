@@ -141,6 +141,7 @@ switch ($action) {
         }
 
     case 'blogDetails':
+        include('../Vue/blogDetails.php');
         if (isLoggedIn()) {
             $postId = $_GET['id'];
             $post = showPostById($postId);
