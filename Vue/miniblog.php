@@ -12,11 +12,11 @@
 <body>
     <section class="hero_section">
         <header>
-            <?php if (isLoggedIn()):?>
+            <?php if (isLoggedIn()): ?>
                 <div class="logo">
                     <img src="path-to-logo.png" alt="Logo">
                 </div>
-            <?php endif;?>
+            <?php endif; ?>
             <nav>
                 <ul>
                     <li><a href="/Miniblog/Controller/index.php?action=home">Home</a></li>
@@ -40,13 +40,25 @@
                 </ul>
             </div>
         </header>
+        <div class="hero_text_container">
+            <div class="hero_title_container">
+                <h1>Bee Blog</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum sunt fugit porro accusamus ullam
+                    temporibus optio, explicabo minus obcaecati laudantium sit voluptatem, impedit similique delectus
+                    modi eaque labore architecto asperiores.</p>
+                <p style="margin-top: 2rem;"><em>Réalisé par Tom MURPHY</em></p>
+            </div>
+            <div class="hero_img_container">
+                <img src="/Miniblog/assets/bee.png" alt="">
+            </div>
+        </div>
     </section>
 
     <main>
         <section class="recent_post">
-            <div class="big_text">Mes publications récentes</div>
-            <div class="big_text">Concernant les Himalaya</div>
-            <div class="big_text">Et tout ce qui touche à la montagne</div>
+            <div class="big_text">Mes <span>articles</span> récents sur les abeilles pour tout savoir sur les <span>ruches</span> et <span>l’apiculture</span></div>
+            <div class="big_text">Découvertes autour du monde des abeilles et de la <span>pollinisation</span>
+            </div>
         </section>
 
         <section class="blog_section">
