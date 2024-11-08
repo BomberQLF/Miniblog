@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Style/blogDetails.css">
+    <link rel="stylesheet" href="../Style/style.css">
     <title>Blog Details</title>
 </head>
 
 <body>
     <header>
-        <div class="logo">
-            <img src="path-to-logo.png" alt="Logo">
-        </div>
-
+        <?php if (isLoggedIn()): ?>
+            <div class="logo">
+                <img src="path-to-logo.png" alt="">
+            </div>
+        <?php endif; ?>
         <nav>
             <ul>
                 <li><a href="/Miniblog/Controller/index.php?action=home">Home</a></li>
                 <li><a href="/Miniblog/Controller/index.php?action=showArchives">Archives</a></li>
 
-                <!-- Afficher les liens supplémentaires si l'utilisateur est admin -->
                 <?php if (isAdmin()): ?>
                     <li><a href="/Miniblog/Controller/index.php?action=preCreatePost">Ajouter un Billet</a></li>
                     <li><a href="/Miniblog/Controller/index.php?action=administration">Administration</a></li>
@@ -27,12 +27,10 @@
             </ul>
         </nav>
 
-        <!-- Profil et Déconnexion alignés à droite -->
         <div class="right-nav">
             <ul>
                 <?php if (isLoggedIn()): ?>
                     <li><a href="/Miniblog/Controller/index.php?action=profile">Mon Profil</a></li>
-                    <li><a href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a></li>
                 <?php else: ?>
                     <li><a href="/Miniblog/Controller/index.php?action=login">Connexion</a></li>
                     <li><a href="/Miniblog/Controller/index.php?action=register">Inscription</a></li>
@@ -43,9 +41,10 @@
 
     <main>
         <div class="introduction">
-            <h1>Blog Details</h1>
-            <p>Découvrez les détails de l'article ci-dessous. Explorez le contenu complet et laissez vos commentaires
-                pour une discussion plus approfondie.</p>
+            <?php if(isLoggedIn()):?>
+                <p>Découvrez les détails de l'article ci-dessous. Explorez le contenu complet et laissez vos commentaires
+                    pour une discussion plus approfondie.</p>
+            <?php endif;?>
         </div>
 
         <?php if (isset($_GET['id'])): ?>
@@ -57,7 +56,7 @@
                     <h2><?php echo htmlspecialchars($post['titre']); ?></h2>
                     <p><?php echo htmlspecialchars($post['contenu']); ?></p>
                     <div class="post-meta">
-                        <small>Date de publication : <?php echo htmlspecialchars($post['date_post']); ?></small>
+                        <small><em>Date de publication : <?php echo htmlspecialchars($post['date_post']); ?></em></small>
                     </div>
                 </div>
                 <div class="comment_part">
@@ -92,8 +91,9 @@
                                     <small>Posté par : <?php echo htmlspecialchars($comment['prenom'] . ' ' . $comment['nom']); ?> le
                                         <?php echo htmlspecialchars($comment['date_post']); ?></small>
                                     <!-- Lien pour supprimer le commentaire -->
-                                    <a
-                                        href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
+                                    <?php if(isLoggedIn()):?>
+                                        <a href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
+                                    <?php endif;?>
                                 </div>
                             <?php endforeach; ?>
                         </div>
