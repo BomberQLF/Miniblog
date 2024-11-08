@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="path-to-logo.png" alt="Logo">
+            <img src="path-to-logo.png" alt="">
         </div>
 
         <nav>
@@ -41,17 +41,21 @@
         </div>
     </header>
 
-    <h1>Liste des archives</h1>
-    <?php $allPosts = showAllPost(); ?>
-    <?php foreach ($allPosts as $totalPosts): ?>
-        <h1><?= htmlspecialchars($totalPosts['titre']) ?></h1>
-        <p><?= htmlspecialchars($totalPosts['contenu']) ?></p>
-        <small><?= htmlspecialchars($totalPosts['date_post']) ?></small>
-        <?php if (isAdmin()): ?>
-            <a
-                href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>">Supprimer</a>
-        <?php endif ?>
-    <?php endforeach ?>
+    <h1 class="archive-title">Liste des archives</h1>
+    <div class="archive-container">
+        <?php $allPosts = showAllPost(); ?>
+        <?php foreach ($allPosts as $totalPosts): ?>
+            <div class="post-item">
+                <h2 class="post-title"><?= htmlspecialchars($totalPosts['titre']) ?></h2>
+                <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
+                <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?></small>
+                <?php if (isAdmin()): ?>
+                    <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
+                        class="delete-button">Supprimer</a>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+    </div>
 </body>
 
 </html>
