@@ -204,7 +204,7 @@ function updatePost($id_billets, $newData)
 
 function postComment($postId, $userId, $commentContent)
 {
-    $pdo = dbConnect(); 
+    $pdo = dbConnect();
 
     try {
         $query = $pdo->prepare("INSERT INTO commentaires (id_commentaires, contenu, date_post, auteur_id, billet_id) VALUES (NULL, :contenu, NOW(), :auteur_id, :billet_id)");
@@ -240,7 +240,7 @@ function showComments($postId)
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function deleteComment ($id_commentaires)
+function deleteComment($id_commentaires)
 {
     $pdo = dbConnect();
     $query = $pdo->prepare("DELETE FROM commentaires WHERE id_commentaires = :id_commentaires");
@@ -259,7 +259,8 @@ function showCommentById($id_commentaires)
     return $comment;
 }
 
-function getCurrentProfilePicture($id_utilisateurs) {
+function getCurrentProfilePicture($id_utilisateurs)
+{
     $pdo = dbConnect();
     $stmt = $pdo->prepare("SELECT photo_profile FROM utilisateurs WHERE id_utilisateurs = :id_utilisateurs");
     $stmt->bindParam(':id_utilisateurs', $id_utilisateurs);
@@ -268,12 +269,11 @@ function getCurrentProfilePicture($id_utilisateurs) {
     return $result['photo_profile'];
 }
 
-function uploadProfilePicture($uniqueFileName, $id_utilisateurs) {
+function uploadProfilePicture($uniqueFileName, $id_utilisateurs)
+{
     $pdo = dbConnect();
     $stmt = $pdo->prepare("UPDATE utilisateurs SET photo_profile = :photo_profile WHERE id_utilisateurs = :id_utilisateurs");
     $stmt->bindParam(':photo_profile', $uniqueFileName);
     $stmt->bindParam(':id_utilisateurs', $id_utilisateurs);
     $stmt->execute();
 }
-
-// FAIRE UNE FONCTION GET IMAGE POUR L'AFFICHER
