@@ -258,3 +258,22 @@ function showCommentById($id_commentaires)
 
     return $comment;
 }
+
+function getCurrentProfilePicture($id_utilisateurs) {
+    $pdo = dbConnect();
+    $stmt = $pdo->prepare("SELECT photo_profile FROM utilisateurs WHERE id_utilisateurs = :id_utilisateurs");
+    $stmt->bindParam(':id_utilisateurs', $id_utilisateurs);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['photo_profile'];
+}
+
+function uploadProfilePicture($uniqueFileName, $id_utilisateurs) {
+    $pdo = dbConnect();
+    $stmt = $pdo->prepare("UPDATE utilisateurs SET photo_profile = :photo_profile WHERE id_utilisateurs = :id_utilisateurs");
+    $stmt->bindParam(':photo_profile', $uniqueFileName);
+    $stmt->bindParam(':id_utilisateurs', $id_utilisateurs);
+    $stmt->execute();
+}
+
+// FAIRE UNE FONCTION GET IMAGE POUR L'AFFICHER
