@@ -141,15 +141,10 @@ switch ($action) {
         }
 
     case 'blogDetails':
-        include('../Vue/blogDetails.php');
-        if (isLoggedIn()) {
             $postId = $_GET['id'];
             $post = showPostById($postId);
             $comments = showComments($postId);
             include('../Vue/blogDetails.php');
-        } else {
-            include('../Vue/login.php');
-        }
         break;
 
 
@@ -189,13 +184,13 @@ switch ($action) {
         }
         break;
 
-    case 'deleteComment' :
+    case 'deleteComment':
         if (isAdmin()) {
             if (isset($_GET['id'])) {
                 $id_comment = intval($_GET['id']);
                 $commentaire = showCommentById($id_comment);
                 deleteComment($id_comment);
-                include('../Vue/messageDeleteComment.php');                
+                include('../Vue/messageDeleteComment.php');
             }
         }
         break;
