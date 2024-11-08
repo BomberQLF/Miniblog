@@ -14,7 +14,7 @@
         <header>
             <?php if (isLoggedIn()): ?>
                 <div class="logo">
-                    <img src="path-to-logo.png" alt="Logo">
+                    <img src="path-to-logo.png" alt="">
                 </div>
             <?php endif; ?>
             <nav>
