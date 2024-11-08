@@ -64,7 +64,6 @@ function hidePostUpdateForm(postId) {
 const textElements = document.querySelectorAll('.post-content');
 
     textElements.forEach(text => {
-        console.log(text.textContent.length);
         if (text.textContent.length > 150) {
             const shortText = text.textContent.slice(0, 150) + '...';
             text.textContent = shortText;
