@@ -206,20 +206,12 @@ function postComment($postId, $userId, $commentContent)
 {
     $pdo = dbConnect();
 
-    try {
-        $query = $pdo->prepare("INSERT INTO commentaires (id_commentaires, contenu, date_post, auteur_id, billet_id) VALUES (NULL, :contenu, NOW(), :auteur_id, :billet_id)");
-        $query->bindValue(':billet_id', $postId, PDO::PARAM_INT);
-        $query->bindValue(':auteur_id', $userId, PDO::PARAM_INT);
-        $query->bindValue(':contenu', htmlspecialchars($commentContent), PDO::PARAM_STR);
+    $query = $pdo->prepare("INSERT INTO commentaires (id_commentaires, contenu, date_post, auteur_id, billet_id) VALUES (NULL, :contenu, NOW(), :auteur_id, :billet_id)");
+    $query->bindValue(':billet_id', $postId, PDO::PARAM_INT);
+    $query->bindValue(':auteur_id', $userId, PDO::PARAM_INT);
+    $query->bindValue(':contenu', htmlspecialchars($commentContent), PDO::PARAM_STR);
 
-        // Exécute la requête et renvoie true si succès
-        return $query->execute();
-
-    } catch (PDOException $e) {
-        // Affiche l'erreur pour faciliter le débogage
-        echo "Erreur lors de l'insertion du commentaire : " . $e->getMessage();
-        return false;
-    }
+    return $query->execute();
 }
 
 
@@ -263,11 +255,13 @@ function getCurrentProfilePicture($id_utilisateurs)
 {
     $pdo = dbConnect();
     $stmt = $pdo->prepare("SELECT photo_profile FROM utilisateurs WHERE id_utilisateurs = :id_utilisateurs");
-    $stmt->bindParam(':id_utilisateurs', $id_utilisateurs);
+    $stmt->bindParam(':id_utilisateurs', $id_utilisateurs, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['photo_profile'];
+
+    return $result ? $result['photo_profile'] : '/Miniblog/uploads/photo_default.png';
 }
+
 
 function uploadProfilePicture($uniqueFileName, $id_utilisateurs)
 {
