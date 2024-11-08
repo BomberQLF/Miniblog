@@ -79,8 +79,8 @@
                         <div class="comments-section">
                             <?php foreach ($comments as $comment): ?>
                                 <div class="comment">
-                                    <?php if (!empty($comment['photo_profile'])): ?>
-                                        <img src="<?php echo htmlspecialchars($comment['photo_profile']); ?>"
+                                    <?php if (empty($comment['photo_profile'])): ?>
+                                        <img src="<?php echo getCurrentProfilePicture($_SESSION['user_id']); ?>"
                                             alt="Photo de profil de <?php echo htmlspecialchars($comment['prenom']); ?>"
                                             class="profile-photo">
                                     <?php else: ?>
