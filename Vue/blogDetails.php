@@ -41,10 +41,10 @@
 
     <main>
         <div class="introduction">
-            <?php if(isLoggedIn()):?>
+            <?php if (isLoggedIn()): ?>
                 <p>Découvrez les détails de l'article ci-dessous. Explorez le contenu complet et laissez vos commentaires
                     pour une discussion plus approfondie.</p>
-            <?php endif;?>
+            <?php endif; ?>
         </div>
 
         <?php if (isset($_GET['id'])): ?>
@@ -79,24 +79,27 @@
                         <div class="comments-section">
                             <?php foreach ($comments as $comment): ?>
                                 <div class="comment">
-                                    <?php if (empty($comment['photo_profile'])): ?>
-                                        <img src="<?php echo getCurrentProfilePicture($_SESSION['user_id']); ?>"
+                                    <?php if (!empty($comment['photo_profile'])): ?>
+                                        <img src="/Miniblog/uploads/<?php echo $comment['photo_profile']; ?>"
                                             alt="Photo de profil de <?php echo htmlspecialchars($comment['prenom']); ?>"
                                             class="profile-photo">
                                     <?php else: ?>
                                         <img src="/Miniblog/uploads/photo_default.png" alt="Photo de profil par défaut"
                                             class="profile-photo">
                                     <?php endif; ?>
+
                                     <p><?php echo htmlspecialchars($comment['contenu']); ?></p>
                                     <small>Posté par : <?php echo htmlspecialchars($comment['prenom'] . ' ' . $comment['nom']); ?> le
                                         <?php echo htmlspecialchars($comment['date_post']); ?></small>
-                                    <!-- Lien pour supprimer le commentaire -->
-                                    <?php if(isLoggedIn()):?>
-                                        <a href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
-                                    <?php endif;?>
+
+                                    <?php if (isLoggedIn()): ?>
+                                        <a
+                                            href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
+                                    <?php endif; ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
                     <?php else: ?>
                         <p>Aucun commentaire pour cet article.</p>
                     <?php endif; ?>
