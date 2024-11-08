@@ -60,7 +60,7 @@
             <a class="logout-link" href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a>
         </div>
         <div class="profile_img">
-            <img src="/Miniblog/uploads/photo_default.png" alt="">
+            <img src="/Miniblog/uploads/<?php echo getCurrentProfilePicture($_SESSION['user_id'])?>" alt="">
         </div>
     </section>
 </body>
