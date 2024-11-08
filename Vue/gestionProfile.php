@@ -52,10 +52,10 @@
             </div>
 
             <h2 class="profile-subtitle">Modifier la photo de profil</h2>
-            <form action="gestionProfile.php?action=upload" method="POST" enctype="multipart/form-data"
+            <form action="/Miniblog/Controller/index.php?action=upload" method="POST" enctype="multipart/form-data"
                 class="profile-form">
                 <input type="file" name="photo_profile" accept="image/*" class="file-input" required><br>
-                <button type="submit" class="upload-button">Télécharger</button>
+                <button type="submit" class="upload-button">Ajouter la photo</button>
             </form>
             <a class="logout-link" href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a>
         </div>
