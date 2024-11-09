@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/style.css">
+    <script src="/Miniblog/Controller/index.js" defer></script>
     <title>Blog Details</title>
 </head>
 
@@ -76,30 +77,36 @@
                     <?php endif; ?>
 
                     <?php if (!empty($comments)): ?>
-                        <div class="comments-section">
-                            <?php foreach ($comments as $comment): ?>
-                                <div class="comment">
-                                    <?php if (!empty($comment['photo_profile'])): ?>
-                                        <img src="/Miniblog/uploads/<?php echo $comment['photo_profile']; ?>"
-                                            alt="Photo de profil de <?php echo htmlspecialchars($comment['prenom']); ?>"
-                                            class="profile-photo">
-                                    <?php else: ?>
-                                        <img src="/Miniblog/uploads/photo_default.png" alt="Photo de profil par défaut"
-                                            class="profile-photo">
-                                    <?php endif; ?>
+                        <div class="comments-container">
+                            <!-- Bouton pour afficher/masquer les commentaires -->
+                            <button id="toggle-comments-btn">Voir les commentaires</button>
 
-                                    <p><?php echo htmlspecialchars($comment['contenu']); ?></p>
-                                    <small>Posté par : <?php echo htmlspecialchars($comment['prenom'] . ' ' . $comment['nom']); ?> le
-                                        <?php echo htmlspecialchars($comment['date_post']); ?></small>
+                            <!-- Section des commentaires, cachée par défaut -->
+                            <div id="comments-section" class="comments-section" style="display: none;">
+                                <?php foreach ($comments as $comment): ?>
+                                    <div class="comment">
+                                        <?php if (!empty($comment['photo_profile'])): ?>
+                                            <img src="/Miniblog/uploads/<?php echo $comment['photo_profile']; ?>"
+                                                alt="Photo de profil de <?php echo htmlspecialchars($comment['prenom']); ?>"
+                                                class="profile-photo">
+                                        <?php else: ?>
+                                            <img src="/Miniblog/uploads/photo_default.png" alt="Photo de profil par défaut"
+                                                class="profile-photo">
+                                        <?php endif; ?>
 
-                                    <?php if (isLoggedIn()): ?>
-                                        <a
-                                            href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endforeach; ?>
+                                        <p><?php echo htmlspecialchars($comment['contenu']); ?></p>
+                                        <small>Posté par : <?php echo htmlspecialchars($comment['prenom'] . ' ' . $comment['nom']); ?>
+                                            le
+                                            <?php echo htmlspecialchars($comment['date_post']); ?></small>
+
+                                        <?php if (isAdmin()): ?>
+                                            <a
+                                                href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
-
                     <?php else: ?>
                         <p>Aucun commentaire pour cet article.</p>
                     <?php endif; ?>
