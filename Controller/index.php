@@ -12,12 +12,18 @@ switch ($action) {
     case 'inscription':
         // Vérifiez si le formulaire a été soumis
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Appel de safetyInscription
-            if (safetyInscription() === true) {
-                handleInscription($_POST);
-                // Redirection après inscription réussie
-                include('../Vue/login.php');
-                exit;
+            // Vérification des mots de passe
+            if ($_POST['mot_de_passe'] !== $_POST['confirm_mot_de_passe']) {
+                $error = 'Les mots de passe ne correspondent pas.';
+                include('../Vue/inscription.php');
+                exit; 
+            } else {
+                // Appel de safetyInscription
+                if (safetyInscription() === true) {
+                    handleInscription($_POST);
+                    include('../Vue/login.php');
+                    exit;
+                }
             }
         }
         include('../Vue/inscription.php');
@@ -119,10 +125,12 @@ switch ($action) {
                         'nom' => $_POST['nom']
                     ];
                     updateUser($id_user, $newData);
+                    include('../Vue/backOffice.php');
                 }
             }
+        } else {
+            include('../Vue/login.php');
         }
-        include('../Vue/login.php');
         break;
 
     case 'updatePost':
