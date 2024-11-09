@@ -788,7 +788,7 @@ hr {
 .delete-user,
 .delete-post {
     color: var(--button-text-color);
-    background-color: var(--delete-button-color);
+    background-color: var(--title-color);
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -817,4 +817,11 @@ hr {
 
 .update-form {
     margin-top: 10px;
+}
+
+.error-message {
+    color: #ff4d4d; 
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
 }
