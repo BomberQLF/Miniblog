@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/style.css">
     <title>Inscription</title>
 </head>
+
 <body class="signup-body">
     <form method="POST" action="/Miniblog/Controller/index.php?action=inscription" class="signup-form">
         <h1 class="signup-title">Inscription</h1>
@@ -28,4 +30,5 @@
         <input type="submit" value="S'inscrire" class="signup-button">
     </form>
 </body>
+
 </html>
