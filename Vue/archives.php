@@ -32,7 +32,6 @@
             <ul>
                 <?php if (isLoggedIn()): ?>
                     <li><a href="/Miniblog/Controller/index.php?action=profile">Mon Profil</a></li>
-                    <li><a href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a></li>
                 <?php else: ?>
                     <li><a href="/Miniblog/Controller/index.php?action=login">Connexion</a></li>
                     <li><a href="/Miniblog/Controller/index.php?action=register">Inscription</a></li>
