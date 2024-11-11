@@ -17,6 +17,12 @@
         <input type="password" name="mot_de_passe" id="mot_de_passe" class="login-input" required>
 
         <input type="submit" value="Se Connecter" class="login-button">
+
+        <?php if(isset($error)) {
+           echo $error;
+        }
+        ?>
+
     </form>
 </body>
 </html>

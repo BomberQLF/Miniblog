@@ -51,6 +51,11 @@
         <input type="hidden" name="auteur_id" value="1">
 
         <button type="submit" class="create-post-button">Publier le billet</button>
+
+        <?php if(isset($error)) {
+           echo $error;
+        }
+        ?>
     </form>
 </body>
 

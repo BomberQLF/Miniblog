@@ -72,6 +72,11 @@
                             </div>
                             <div>
                                 <button type="submit">Poster le commentaire</button>
+
+                                <?php if (isset($echecAjout)) {
+                                    echo $echecAjout;
+                                }
+                                ?>
                             </div>
                         </form>
                     <?php endif; ?>
@@ -103,6 +108,10 @@
                                             <a
                                                 href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
                                         <?php endif; ?>
+                                        <?php if (isset($error)) {
+                                            echo $error;
+                                        }
+                                        ?>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

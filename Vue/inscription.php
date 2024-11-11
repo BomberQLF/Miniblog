@@ -28,6 +28,11 @@
         <input type="password" name="confirm_mot_de_passe" id="confirm_mot_de_passe" class="signup-input" required>
 
         <input type="submit" value="S'inscrire" class="signup-button">
+
+        <?php if(isset($error)) {
+           echo $error;
+        }
+        ?>
     </form>
 </body>
 
