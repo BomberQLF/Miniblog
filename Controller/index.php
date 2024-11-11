@@ -86,6 +86,7 @@ switch ($action) {
                 include('../Vue/miniblog.php');
             } else {
                 include('../Vue/login.php');
+                $error = "Une erreur est survenu lors de la création du billet";
             }
         }
         break;
@@ -147,6 +148,7 @@ switch ($action) {
                 }
             }
         }
+        break;
 
     case 'blogDetails':
         $postId = $_GET['id'];
@@ -172,23 +174,11 @@ switch ($action) {
                         include("../Vue/blogDetails.php");
 
                     } else {
-                        echo "Erreur : Échec de l'ajout du commentaire.";
+                        $echecAjout = "Erreur : Échec de l'ajout du commentaire.";
                     }
 
-                } else {
-                    echo "Erreur : Les données ne sont pas valides.";
-                    if (empty($postId))
-                        echo " postId est vide.";
-                    if (empty($userId))
-                        echo " userId est vide.";
-                    if (empty($commentContent))
-                        echo " commentContent est vide.";
-                }
-            } else {
-                echo "Erreur : Ce n'est pas une requête POST.";
+                } 
             }
-        } else {
-            echo "Erreur : L'utilisateur n'est pas connecté.";
         }
         break;
 
@@ -200,6 +190,8 @@ switch ($action) {
                 deleteComment($id_comment);
                 include('../Vue/messageDeleteComment.php');
             }
+        } else {
+            $error = "Vous n'avez pas les permissions.";
         }
         break;
 
@@ -217,19 +209,19 @@ switch ($action) {
 
             // Vérifiez les erreurs d'upload
             if ($_FILES["photo_profile"]["error"] != 0) {
-                echo "Erreur lors de l'upload du fichier.";
+                $error = "Erreur lors de l'upload du fichier.";
                 $uploadOk = 0;
             }
 
             // Vérifiez la taille du fichier
             if ($_FILES["photo_profile"]["size"] > 500000) {
-                echo "Désolé, votre fichier est trop volumineux.";
+                $volumineux = "Désolé, votre fichier est trop volumineux.";
                 $uploadOk = 0;
             }
 
             // Vérifiez les formats de fichier autorisés
             if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
-                echo "Désolé, seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
+                $format = "Désolé, seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
                 $uploadOk = 0;
             }
 
@@ -248,7 +240,7 @@ switch ($action) {
                     uploadProfilePicture($uniqueFileName, $id_personne);
 
                 } else {
-                    echo "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
+                    $erreurUpload = "Désolé, une erreur est survenue lors du téléchargement de votre fichier.";
                 }
             }
         }
