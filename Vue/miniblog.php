@@ -43,9 +43,9 @@
         <div class="hero_text_container">
             <div class="hero_title_container">
                 <h1>Bee Blog</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum sunt fugit porro accusamus ullam
-                    temporibus optio, explicabo minus obcaecati laudantium sit voluptatem, impedit similique delectus
-                    modi eaque labore architecto asperiores.</p>
+                <p>Ce mini-blog sur les abeilles est un projet universitaire réalisé dans le cadre de l’apprentissage du
+                    développement web. Il permet d’explorer les bases du PHP et du MVC tout en mettant en avant un sujet
+                    captivant.</p>
                 <p style="margin-top: 2rem;"><em>Réalisé par Tom MURPHY</em></p>
             </div>
             <div class="hero_img_container">
@@ -56,7 +56,8 @@
 
     <main>
         <section class="recent_post">
-            <div class="big_text">Mes <span>articles</span> récents sur les abeilles pour tout savoir sur les <span>ruches</span> et <span>l’apiculture</span></div>
+            <div class="big_text">Mes <span>articles</span> récents sur les abeilles pour tout savoir sur les
+                <span>ruches</span> et <span>l’apiculture</span></div>
             <div class="big_text">Découvertes autour du monde des abeilles et de la <span>pollinisation</span>
             </div>
         </section>
