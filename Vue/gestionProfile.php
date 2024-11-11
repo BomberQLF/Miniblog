@@ -56,11 +56,27 @@
                 class="profile-form">
                 <input type="file" name="photo_profile" accept="image/*" class="file-input" required><br>
                 <button type="submit" class="upload-button">Ajouter la photo</button>
+                <?php if (isset($error)) {
+                    echo $error;
+                }
+                ?>
+                <?php if (isset($volumineux)) {
+                    echo $volumineux;
+                }
+                ?>
+                <?php if (isset($format)) {
+                    echo $format;
+                }
+                ?>
+                <?php if (isset($erreurUpload)) {
+                    echo $erreurUpload;
+                }
+                ?>
             </form>
             <a class="logout-link" href="/Miniblog/Controller/index.php?action=logout">Se Déconnecter</a>
         </div>
         <div class="profile_img">
-            <img src="/Miniblog/uploads/<?php echo getCurrentProfilePicture($_SESSION['user_id'])?>" alt="">
+            <img src="/Miniblog/uploads/<?php echo getCurrentProfilePicture($_SESSION['user_id']) ?>" alt="">
         </div>
     </section>
 </body>
