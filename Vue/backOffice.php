@@ -83,14 +83,22 @@
         </div>
         <div class="last-column">
             <h2 class="section-title">Liste des commentaires</h2>
-            <?php $listComment = showAllComment();?>
-            <?php foreach($listComment as $listComments):?>
+            <?php $listComment = showAllComment(); ?>
+            <?php foreach ($listComment as $listComments): ?>
                 <div class="comments-item">
                     <p class="comment-title"><?= $listComments['contenu'] ?></p>
-                    <small><?= $listComments['date_post'];?></small>
+                    <small><?= $listComments['date_post']; ?></small>
                     <a href="/Miniblog/Controller/index.php?action=deleteComment&id=<?= $listComments['id_commentaires']; ?>"
-                    class="delete-post">Supprimer</a>
-                    <!-- METTRE LE FORMULAIRE ICI ET CACHER PAR DÉFAUT AVEC COMME VALUE LE CONTENU ET TITRE DEJA PUIS FAIRE PAREIL POUR LES AUTRES AUSSI -->
+                        class="delete-post">Supprimer</a>
+                    <form
+                        action="/Miniblog/Controller/index.php?action=updateComment&id=<?= $listComments['id_commentaires']; ?>"
+                        class="updateComments" method="POST" style="display: none;">
+                        <label for="contenu">Contenu</label>
+                        <input type="text" name="contenu" class="contenu" value="<?= $listComments['contenu']; ?>">
+                        <input type="submit">
+                        <button type="button" class="cancel-button" onclick="hideCommentUpdateForm(event)">Annuler</button>
+                    </form>
+                    <button class="btnComment" onclick="showFormComment(event)">Modifier</button>
                 </div>
             <?php endforeach; ?>
         </div>

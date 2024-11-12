@@ -16,7 +16,7 @@ switch ($action) {
             if ($_POST['mot_de_passe'] !== $_POST['confirm_mot_de_passe']) {
                 $error = 'Les mots de passe ne correspondent pas.';
                 include('../Vue/inscription.php');
-                exit; 
+                exit;
             } else {
                 // Appel de safetyInscription
                 if (safetyInscription() === true) {
@@ -150,6 +150,19 @@ switch ($action) {
         }
         break;
 
+    case 'updateComment':
+        if (isAdmin()) {
+            if (isset($_GET['id'])) {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $id_commentaires = intval($_GET['id']);
+                    updateComment($id_commentaires, ['contenu' => $_POST['contenu']]);
+                    include('../Vue/backOffice.php');
+                }
+            }
+        }
+        break;
+
+
     case 'blogDetails':
         $postId = $_GET['id'];
         $post = showPostById($postId);
@@ -177,7 +190,7 @@ switch ($action) {
                         $echecAjout = "Erreur : Échec de l'ajout du commentaire.";
                     }
 
-                } 
+                }
             }
         }
         break;

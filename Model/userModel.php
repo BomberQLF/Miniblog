@@ -242,6 +242,15 @@ function showAllComment()
     return $listComments;
 }
 
+function updateComment($id_commentaires, $newData)
+{
+    $pdo = dbConnect();
+    $query = $pdo->prepare("UPDATE commentaires SET contenu = :contenu WHERE id_commentaires = :id_commentaires");
+    $query->bindValue(':contenu', $newData['contenu']);
+    $query->bindValue(':id_commentaires', $id_commentaires, PDO::PARAM_STR);
+    $query->execute();
+}
+
 function deleteComment($id_commentaires)
 {
     $pdo = dbConnect();
