@@ -47,15 +47,44 @@
             <?php $allUsers = showUsers(); ?>
             <?php foreach ($allUsers as $allUser): ?>
                 <div class="user-item">
-                    <p class="user-info">ID: <?php echo $allUser['id_utilisateurs'] ?></p>
-                    <p class="user-info">Login: <?php echo $allUser['login'] ?></p>
-                    <p class="user-info">Prénom: <?php echo $allUser['prenom'] ?></p>
-                    <p class="user-info">Nom: <?php echo $allUser['nom'] ?></p>
+                    <p class="user-info">ID: <?php echo $allUser['id_utilisateurs']; ?></p>
+                    <p class="user-info">Login: <?php echo htmlspecialchars($allUser['login']); ?></p>
+                    <p class="user-info">Prénom: <?php echo htmlspecialchars($allUser['prenom']); ?></p>
+                    <p class="user-info">Nom: <?php echo htmlspecialchars($allUser['nom']); ?></p>
                     <a href="/Miniblog/Controller/index.php?action=deleteUser&id=<?php echo $allUser['id_utilisateurs']; ?>"
                         class="delete-user">Supprimer l'utilisateur</a>
                     <button class="edit-button"
                         onclick="showUpdateForm(<?php echo $allUser['id_utilisateurs']; ?>)">Modifier</button>
-                    <div id="update-form-<?php echo $allUser['id_utilisateurs']; ?>" class="update-form"></div>
+
+                    <!-- Formulaire caché par défaut -->
+                    <div id="update-form-<?php echo $allUser['id_utilisateurs']; ?>" class="update-form"
+                        style="display: none;">
+                        <form
+                            action="/Miniblog/Controller/index.php?action=updateUser&id=<?php echo $allUser['id_utilisateurs']; ?>"
+                            method="POST" class="update-form">
+                            <h1 class="update-title">Mettre à Jour l'Utilisateur</h1>
+
+                            <label for="login-<?php echo $allUser['id_utilisateurs']; ?>" class="update-label">Login
+                                :</label>
+                            <input type="text" name="login" id="login-<?php echo $allUser['id_utilisateurs']; ?>"
+                                class="update-input" value="<?php echo htmlspecialchars($allUser['login']); ?>"
+                                required><br>
+
+                            <label for="prenom-<?php echo $allUser['id_utilisateurs']; ?>" class="update-label">Prénom
+                                :</label>
+                            <input type="text" name="prenom" id="prenom-<?php echo $allUser['id_utilisateurs']; ?>"
+                                class="update-input" value="<?php echo htmlspecialchars($allUser['prenom']); ?>"
+                                required><br>
+
+                            <label for="nom-<?php echo $allUser['id_utilisateurs']; ?>" class="update-label">Nom :</label>
+                            <input type="text" name="nom" id="nom-<?php echo $allUser['id_utilisateurs']; ?>"
+                                class="update-input" value="<?php echo htmlspecialchars($allUser['nom']); ?>" required><br>
+
+                            <button type="submit" class="update-button">Enregistrer les modifications</button>
+                            <button type="button" class="update-cancel-button"
+                                onclick="hideUpdateForm(<?php echo $allUser['id_utilisateurs']; ?>)">Annuler</button>
+                        </form>
+                    </div>
                 </div>
                 <hr>
             <?php endforeach ?>
@@ -70,12 +99,32 @@
                     <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
                     <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?> - ID:
                         <?= htmlspecialchars($totalPosts['id_billets']) ?></small>
+
                     <?php if (isAdmin()): ?>
                         <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
                             class="delete-post">Supprimer</a>
-                        <button class="edit-button"
-                            onclick="showPostUpdateForm(<?php echo $totalPosts['id_billets']; ?>)">Modifier le billet</button>
-                        <div id="update-form-post-<?php echo $totalPosts['id_billets']; ?>" class="update-form"></div>
+                        <button class="edit-button" onclick="showPostUpdateForm(<?= $totalPosts['id_billets']; ?>)">
+                            Modifier le billet
+                        </button>
+                        <!-- Formulaire caché par défaut -->
+                        <form action="/Miniblog/Controller/index.php?action=updatePost&id=<?= $totalPosts['id_billets']; ?>"
+                            method="POST" class="update-form-post" id="update-form-post-<?= $totalPosts['id_billets']; ?>"
+                            style="display: none;">
+                            <label for="titre-<?= $totalPosts['id_billets']; ?>" class="update-label-post">Titre :</label>
+                            <input type="text" name="titre" id="titre-<?= $totalPosts['id_billets']; ?>"
+                                class="update-input-post" value="<?= htmlspecialchars($totalPosts['titre']); ?>"
+                                placeholder="Nouveau titre" required><br>
+
+                            <label for="contenu-<?= $totalPosts['id_billets']; ?>" class="update-label-post">Contenu
+                                :</label><br>
+                            <textarea name="contenu" id="contenu-<?= $totalPosts['id_billets']; ?>" class="update-textarea-post"
+                                placeholder="Nouveau contenu"
+                                required><?= htmlspecialchars($totalPosts['contenu']); ?></textarea><br>
+
+                            <button type="submit" class="update-button-post">Enregistrer les modifications</button>
+                            <button type="button" class="update-cancel-button-post"
+                                onclick="hidePostUpdateForm(<?= $totalPosts['id_billets']; ?>)">Annuler</button>
+                        </form>
                     <?php endif ?>
                 </div>
                 <hr>

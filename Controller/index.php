@@ -130,7 +130,7 @@ switch ($action) {
                 }
             }
         } else {
-            include('../Vue/login.php');
+            include('../Vue/login.php'); 
         }
         break;
 
@@ -142,9 +142,9 @@ switch ($action) {
                     $newData = [
                         'titre' => $_POST['titre'],
                         'contenu' => $_POST['contenu'],
-                        'auteur_id' => $_POST['auteur_id']
                     ];
                     updatePost($id_billets, $newData);
+                    include('../Vue/backOffice.php');
                 }
             }
         }
