@@ -232,6 +232,16 @@ function showComments($postId)
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function showAllComment()
+{
+    $db = dbConnect();
+    $query = $db->prepare('SELECT * FROM commentaires');
+    $query->execute();
+    $listComments = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $listComments;
+}
+
 function deleteComment($id_commentaires)
 {
     $pdo = dbConnect();

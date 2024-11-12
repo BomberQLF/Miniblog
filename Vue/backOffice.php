@@ -81,6 +81,19 @@
                 <hr>
             <?php endforeach ?>
         </div>
+        <div class="last-column">
+            <h2 class="section-title">Liste des commentaires</h2>
+            <?php $listComment = showAllComment();?>
+            <?php foreach($listComment as $listComments):?>
+                <div class="comments-item">
+                    <p class="comment-title"><?= $listComments['contenu'] ?></p>
+                    <small><?= $listComments['date_post'];?></small>
+                    <a href="/Miniblog/Controller/index.php?action=deleteComment&id=<?= $listComments['id_commentaires']; ?>"
+                    class="delete-post">Supprimer</a>
+                    <!-- METTRE LE FORMULAIRE ICI ET CACHER PAR DÉFAUT AVEC COMME VALUE LE CONTENU ET TITRE DEJA PUIS FAIRE PAREIL POUR LES AUTRES AUSSI -->
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </body>
 

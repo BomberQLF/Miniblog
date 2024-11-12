@@ -13,9 +13,11 @@
     <section class="hero_section">
         <header>
             <?php if (isLoggedIn()): ?>
-                <div class="logo">
-                    <img src="path-to-logo.png" alt="">
-                </div>
+                <?php if(!empty($comments)): ?>
+                    <div class="logo">
+                        <img src="/Miniblog/uploads/<?= $comments['photo_profile']?>" alt="">
+                    </div>
+                <?php endif;?>
             <?php endif; ?>
             <nav>
                 <ul>
