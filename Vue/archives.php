@@ -45,23 +45,35 @@
         <?php $allPosts = showAllPost(); ?>
         <?php foreach ($allPosts as $totalPosts): ?>
             <div class="post-item">
-                <h2 class="post-title"><?= htmlspecialchars($totalPosts['titre']) ?></h2>
+                <!-- Conteneur pour le titre et la photo -->
+                <div class="post-header">
+                    <h2 class="post-title"><?= htmlspecialchars($totalPosts['titre']) ?></h2>
 
-                <!-- Afficher la photo si elle existe -->
-                <?php if (!empty($totalPosts['photo_post'])): ?>
-                    <img src="/Miniblog/uploads/<?= htmlspecialchars($totalPosts['photo_post']) ?>" alt="Photo du billet"
-                        class="post-photo">
-                <?php endif; ?>
+                    <!-- Afficher la photo si elle existe -->
+                    <?php if (!empty($totalPosts['photo_post'])): ?>
+                        <div class="post-photo-container">
+                            <img src="/Miniblog/uploads/<?= htmlspecialchars($totalPosts['photo_post']) ?>"
+                                alt="Photo du billet" class="post-photo">
+                        </div>
+                    <?php endif; ?>
+                </div>
 
-                <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
-                <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?></small>
+                <!-- Contenu principal du billet -->
+                <div class="post-body">
+                    <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
+                    <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?></small>
+                </div>
 
+                <!-- Bouton de suppression pour l'admin -->
                 <?php if (isAdmin()): ?>
-                    <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
-                        class="delete-button">Supprimer</a>
-                <?php endif ?>
+                    <div class="post-actions">
+                        <a href="/Miniblog/Controller/index.php?action=blogDetails&id=<?= $totalPosts['id_billets'];?>">Voir plus</a>
+                        <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
+                            class="delete-button">Supprimer</a>
+                    </div>
+                <?php endif; ?>
             </div>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </div>
 </body>
 

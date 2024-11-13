@@ -59,10 +59,10 @@
                             alt="Image associée au billet" class="post-image">
                     <?php endif; ?>
 
-                    <h2><?php echo htmlspecialchars($post['titre']); ?></h2>
+                    <h2 class="h2_post"><?php echo htmlspecialchars($post['titre']); ?></h2>
                     <p><?php echo htmlspecialchars($post['contenu']); ?></p>
                     <div class="post-meta">
-                        <small><em>Date de publication : <?php echo htmlspecialchars($post['date_post']); ?></em></small>
+                        <small class="small_post_date"><em>Date de publication : <?php echo htmlspecialchars($post['date_post']); ?></em></small>
                     </div>
                 </div>
                 <div class="comment_part">

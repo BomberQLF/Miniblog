@@ -28,10 +28,6 @@ h1{
     color: transparent;
 }
 
-a:hover {
-    text-decoration: underline;
-    color: #dee3e7;
-}
 
 /* Couleur pour les boutons */
 button, .btn {
@@ -242,6 +238,11 @@ p {
     padding-top: 10px;
 }
 
+.small_post_date {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #636aca;
+}
+
 /* Style for the Date */
 .post small::before {
     content: "| ";
@@ -277,12 +278,18 @@ a {
     padding-left: 3rem;
     margin-bottom: 5rem;
     width: 75%;
+    border-left: 1px solid rgba(255, 255, 255, 0.508);
 }
 .post-detail > h2 {
     font-size: 2rem;
 }
 .post-detail > p {
     font-size: 1.2rem;
+}
+
+.h2_post {
+    background: linear-gradient(90.01deg, #636aca -8.79%, #dee3e7c1 51.99%, rgba(255, 255, 255, 0) 109.94%) text;
+    color: transparent;
 }
 
 
@@ -420,10 +427,6 @@ a {
     margin-top: 1rem;
 }
 
-.login-button:hover {
-    background-color: #145a28;
-}
-
 /* SIGNUP */
 
 .signup-body {
@@ -480,10 +483,6 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.signup-button:hover {
-    background-color: #145a28;
 }
 
 
@@ -547,9 +546,6 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.create-post-button:hover {
-    background-color: #145a28;
-}
 
 /* COMMENTAIRE */
 
@@ -599,9 +595,10 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.comment_part button:hover {
-    background-color: #145a28;
+#commentContent {
+    background-color: #a1a1a14d;
 }
+
 
 /* Section des commentaires existants */
 .comments-section {
@@ -613,7 +610,6 @@ a {
     padding: 15px;
     margin-bottom: 15px;
     gap: 10px;
-    border: 1px solid #187335;
 }
 
 .profile-photo {
@@ -648,119 +644,225 @@ a {
 /* ARCHIVES */
 
 .archive-container {
-    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-}
-
-.archive-title {
-    margin-top: 11rem;
+    max-width: 1200px; 
     padding: 20px;
-    font-size: 3rem;
+    margin: auto;
 }
 
-.archive-container h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+/* Chaque élément de billet */
+.post-item {
+    background-color: #ffffff20;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px; /* Limite la largeur des billets */
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol */
+.post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Conteneur du titre et de la photo */
+.post-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* Photo du billet */
+.post-photo-container {
+    margin-top: 12px;
     text-align: center;
 }
 
-.post-item {
-    padding: 20px;
+.post-photo {
+    max-width: 100%;
     border-radius: 8px;
-    margin-bottom: 20px;
+    object-fit: cover;
 }
 
-.post-item h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
+.post-body {
+    margin-bottom: 16px;
+    text-align: justify;
 }
 
-.post-item p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 10px;
+/* Texte du billet */
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #dee3e7; 
 }
 
-.post-item small {
-    display: block;
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 10px;
-}
-
-.post-item a {
-    display: inline-block;
-    padding: 8px 12px;
+/* Date du billet */
+.post-date {
     font-size: 14px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    color: #999; /* Gris clair */
+    display: block;
+    margin-top: 10px;
 }
 
-.post-item a:hover {
-    background-color: #b02d3f;
+/* Section d'actions pour l'admin */
+.post-actions {
+    text-align: right;
+}
+
+.delete-button {
+    color: #ff4d4d; /* Rouge vif pour la suppression */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 1rem;
+}
+
+.delete-button:hover {
+    text-decoration: underline;
 }
 /* BACKOFFICE */
 
-hr {
-    margin-top: 3rem;
-}
-.backoffice-title {
-    font-size: 28px;
-    text-align: center;
-    margin: 170px 0 0 0;
-    width: 100%;
-}
-
 .backoffice-container {
     display: flex;
-    gap: 30px;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1b1c1d; /* Fond presque noir */
+    color: #fff; /* Texte blanc */
 }
 
-.left-column,
-.right-column {
-    flex: 1;
+/* Colonne de gauche */
+.left-column, .right-column, .last-column {
+    width: 30%;
+    background-color: #ffffff20; /* Fond légèrement transparent */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.left-column {
+    margin-right: 20px;
+}
+
+.right-column {
+    margin-right: 20px;
+}
+
+/* Titre des sections */
 .section-title {
-    font-size: 22px;
+    color: #636aca; /* Violet pour les titres */
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
-.user-item,
-.post-item {
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
+/* Liste des utilisateurs, billets et commentaires */
+.user-item, .post-item, .comments-item {
+    margin-bottom: 20px;
 }
 
-.user-info,
-.post-content,
-.post-date {
+.user-info, .post-title, .post-content, .comment-title {
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: #fff; /* Texte blanc */
 }
 
-.delete-user,
-.delete-post {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
+.post-date, .user-info small {
+    font-size: 12px;
+    color: #aaa; /* Gris clair pour la date et petites infos */
+}
+
+/* Liens */
+.delete-user, .delete-post, .delete-comment {
+    color: #636aca; /* Violet pour les liens */
     text-decoration: none;
-    display: inline-block;
+    font-size: 14px;
     margin-right: 10px;
 }
 
-.delete-user:hover,
-.delete-post:hover {
-    background-color: #c5302d;
+.delete-user:hover, .delete-post:hover, .delete-comment:hover {
+    color: #575db3; /* Violet plus foncé au survol */
+}
+
+/* Boutons */
+.edit-button, .btnComment {
+    background-color: #636aca; /* Violet pour les boutons */
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover, .btnComment:hover {
+    background-color: #575db3; /* Violet plus foncé au survol */
+}
+
+/* Formulaire de mise à jour */
+.update-form, .update-form-post, .updateComments {
+    background-color: #f4f4f43b;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.update-title {
+    color: #636aca; /* Violet pour les titres de formulaire */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.update-label, .update-label-post, .update-label-comment {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #fff; /* Texte blanc pour les labels */
+}
+
+.update-input, .update-input-post, .contenu {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Boutons de mise à jour */
+.update-button, .update-button-post {
+    background-color: #636aca; /* Violet pour les boutons */
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-button:hover, .update-button-post:hover {
+    background-color: #575db3; /* Violet plus foncé au survol */
+}
+
+/* Boutons d'annulation */
+.update-cancel-button, .update-cancel-button-post, .cancel-button {
+    background-color: #ddd;
+    color: #000;
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.update-cancel-button:hover, .update-cancel-button-post:hover, .cancel-button:hover {
+    background-color: #bbb;
 }
 
 .edit-button {
@@ -770,9 +872,6 @@ hr {
     cursor: pointer;
 }
 
-.edit-button:hover {
-    background-color: #3d9140;
-}
 
 .update-form {
     margin-top: 10px;
@@ -790,8 +889,6 @@ hr {
 }
 
 .post-image {
-    width: 100%;
-    height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
     object-fit: cover;
@@ -801,4 +898,96 @@ hr {
     max-width: 100%;
     height: auto;
     margin: 10px 0;
+}
+
+/* Container global des posts */
+.post-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6rem;
+    justify-content: center;
+    padding: 20px;
+    background-color: #1b1c1d;
+}
+
+/* Chaque carte de post */
+.post-card {
+    width: 350px;
+    height: 400px;
+    background-color: #2b2c2f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #dee3e7;
+    text-decoration: none;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Image du post */
+.post-image-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Contenu du post */
+.post-content-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #dee3e7;
+    margin: 0;
+}
+
+.post-excerpt {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #b0b3b8;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Footer du post */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #636aca;
+}
+
+.post-read-more {
+    font-weight: bold;
+    color: #636aca;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.post-read-more:hover {
+    color: #dee3e7;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #b0b3b8;
 }

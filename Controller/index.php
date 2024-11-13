@@ -99,7 +99,7 @@ switch ($action) {
                             $error = "Désolé, votre fichier est trop volumineux.";
                             $uploadOk = 0;
                         }
-                        if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+                        if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif", "webp"])) {
                             $error = "Seuls les fichiers JPG, JPEG, PNG et GIF sont autorisés.";
                             $uploadOk = 0;
                         }

@@ -122,7 +122,7 @@ function createPost($titre, $contenu, $auteurId, $photoPost = null)
     $query->bindValue(':titre', $titre);
     $query->bindValue(':contenu', $contenu);
     $query->bindValue(':auteur_id', $auteurId);
-    $query->bindValue(':photo_post', $photoPost); 
+    $query->bindValue(':photo_post', $photoPost);
 
     if ($query->execute()) {
         return "Billet créé avec succès";
@@ -169,9 +169,22 @@ function showAllPost()
 function deletePost($id_billets)
 {
     $pdo = dbConnect();
-    $query = $pdo->prepare("DELETE FROM billets WHERE id_billets = :id_billets");
-    $query->bindValue(':id_billets', $id_billets, PDO::PARAM_INT);
-    $query->execute();
+    // Démarrer la transaction
+    $pdo->beginTransaction();
+
+    // Supprimer les commentaires liés au billet
+    $queryComments = $pdo->prepare("DELETE FROM commentaires WHERE billet_id = :id_billets");
+    $queryComments->bindValue(':id_billets', $id_billets, PDO::PARAM_INT);
+    $queryComments->execute();
+
+    // Supprimer le billet
+    $queryBillet = $pdo->prepare("DELETE FROM billets WHERE id_billets = :id_billets");
+    $queryBillet->bindValue(':id_billets', $id_billets, PDO::PARAM_INT);
+    $queryBillet->execute();
+
+    // Valider la transaction
+    $pdo->commit();
+
 }
 
 function showUsers()
