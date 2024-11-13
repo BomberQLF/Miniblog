@@ -109,13 +109,20 @@ function userExists($userId)
     return $query->fetchColumn() > 0;
 }
 
-function createPost($titre, $contenu, $auteurId)
+function createPost($titre, $contenu, $auteurId, $photoPost = null)
 {
     $pdo = dbConnect();
-    $query = $pdo->prepare("INSERT INTO billets (id_billets, titre, contenu, date_post, auteur_id) VALUES (NULL ,:titre, :contenu, NOW(), :auteur_id)");
+
+    // Ajoute le champ `photo_post` dans la requête
+    $query = $pdo->prepare("
+        INSERT INTO billets (id_billets, titre, contenu, date_post, auteur_id, photo_post)
+        VALUES (NULL, :titre, :contenu, NOW(), :auteur_id, :photo_post)
+    ");
+
     $query->bindValue(':titre', $titre);
     $query->bindValue(':contenu', $contenu);
     $query->bindValue(':auteur_id', $auteurId);
+    $query->bindValue(':photo_post', $photoPost); 
 
     if ($query->execute()) {
         return "Billet créé avec succès";
@@ -126,7 +133,12 @@ function createPost($titre, $contenu, $auteurId)
 function showThreePost()
 {
     $pdo = dbConnect();
-    $query = $pdo->prepare("SELECT id_billets, titre, contenu, date_post, auteur_id FROM billets ORDER BY date_post DESC LIMIT 3");
+    $query = $pdo->prepare("
+        SELECT id_billets, titre, contenu, date_post, auteur_id, photo_post 
+        FROM billets 
+        ORDER BY date_post DESC 
+        LIMIT 3
+    ");
     $query->execute();
     $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -136,7 +148,7 @@ function showThreePost()
 function showPostById($id)
 {
     $pdo = dbConnect();
-    $query = $pdo->prepare("SELECT id_billets, titre, contenu, date_post, auteur_id FROM billets WHERE id_billets = :id");
+    $query = $pdo->prepare("SELECT id_billets, titre, contenu, date_post, auteur_id, photo_post FROM billets WHERE id_billets = :id");
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     $query->execute();
     $post = $query->fetch(PDO::FETCH_ASSOC);
@@ -147,7 +159,7 @@ function showPostById($id)
 function showAllPost()
 {
     $pdo = dbConnect();
-    $query = $pdo->prepare("SELECT id_billets, titre, contenu, date_post, auteur_id FROM billets ORDER BY date_post ASC");
+    $query = $pdo->prepare("SELECT id_billets, titre, contenu, date_post, auteur_id, photo_post FROM billets ORDER BY date_post ASC");
     $query->execute();
     $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 
