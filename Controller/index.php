@@ -78,18 +78,56 @@ switch ($action) {
         isAdmin() ? include('../Vue/createPost.php') : include('../Vue/login.php');
         break;
 
-    case 'createPost':
-        if (isAdmin()) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $auteurId = $_SESSION['user_id'];
-                createPost($_POST['titre'], $_POST['contenu'], $auteurId);
-                include('../Vue/miniblog.php');
-            } else {
-                include('../Vue/login.php');
-                $error = "Une erreur est survenu lors de la création du billet";
+        case 'createPost':
+            if (isAdmin()) {
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $auteurId = $_SESSION['user_id'];
+                    $photoPost = null; // Par défaut, aucune photo
+        
+                    // Vérifie si un fichier est uploadé
+                    if (isset($_FILES['photo_post']) && $_FILES['photo_post']['error'] == 0) {
+                        $target_dir = "/Applications/MAMP/htdocs/Miniblog/uploads/";
+                        $imageFileType = strtolower(pathinfo($_FILES["photo_post"]["name"], PATHINFO_EXTENSION));
+        
+                        // Crée un nom de fichier unique
+                        $uniqueFileName = uniqid() . "_" . time() . "." . $imageFileType;
+                        $target_file = $target_dir . $uniqueFileName;
+        
+                        // Vérifications du fichier
+                        $uploadOk = 1;
+                        if ($_FILES["photo_post"]["size"] > 500000) {
+                            $error = "Désolé, votre fichier est trop volumineux.";
+                            $uploadOk = 0;
+                        }
+                        if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+                            $error = "Seuls les fichiers JPG, JPEG, PNG et GIF sont autorisés.";
+                            $uploadOk = 0;
+                        }
+        
+                        // Si tout est OK, déplace le fichier
+                        if ($uploadOk == 1) {
+                            if (move_uploaded_file($_FILES["photo_post"]["tmp_name"], $target_file)) {
+                                $photoPost = $uniqueFileName;
+                            } else {
+                                $error = "Erreur lors de l'upload de la photo.";
+                            }
+                        }
+                    }
+        
+                    // Crée le post en incluant la photo si elle a été uploadée
+                    if (!isset($error)) {
+                        createPost($_POST['titre'], $_POST['contenu'], $auteurId, $photoPost);
+                        include('../Vue/miniblog.php');
+                    } else {
+                        include('../Vue/miniblog.php');
+                        echo $error;
+                    }
+                } else {
+                    include('../Vue/login.php');
+                    echo "Une erreur est survenue lors de la création du billet.";
+                }
             }
-        }
-        break;
+            break;
 
     case 'deletePost':
         if (isAdmin()) {
