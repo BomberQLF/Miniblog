@@ -39,7 +39,8 @@
             </ul>
         </div>
     </header>
-    <form action="/Miniblog/Controller/index.php?action=createPost" method="POST" class="create-post-form">
+    <form action="/Miniblog/Controller/index.php?action=createPost" method="POST" enctype="multipart/form-data"
+        class="create-post-form">
         <h1 class="create-post-title">Créer un nouveau billet</h1>
 
         <label for="titre" class="create-post-label">Titre</label>
@@ -48,14 +49,16 @@
         <label for="contenu" class="create-post-label">Contenu</label>
         <textarea name="contenu" id="contenu" class="create-post-textarea" rows="6" required></textarea>
 
+        <label for="photo_post" class="create-post-label">Photo (optionnel)</label>
+        <input type="file" name="photo_post" id="photo_post" class="file-input" accept="image/*">
+
         <input type="hidden" name="auteur_id" value="1">
 
         <button type="submit" class="create-post-button">Publier le billet</button>
 
-        <?php if(isset($error)) {
-           echo $error;
-        }
-        ?>
+        <?php if (isset($error)) {
+            echo $error;
+        } ?>
     </form>
 </body>
 
