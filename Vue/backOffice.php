@@ -139,16 +139,19 @@
                     <small><?= $listComments['date_post']; ?></small>
                     <a href="/Miniblog/Controller/index.php?action=deleteComment&id=<?= $listComments['id_commentaires']; ?>"
                         class="delete-post">Supprimer</a>
-                    <form
+
+                    <form id="update-form-<?= $listComments['id_commentaires']; ?>"
                         action="/Miniblog/Controller/index.php?action=updateComment&id=<?= $listComments['id_commentaires']; ?>"
                         class="updateComments" method="POST" style="display: none;">
-                        <label for="contenu">Contenu</label>
-                        <input type="text" name="contenu" class="contenu" value="<?= $listComments['contenu']; ?>">
-                        <input type="submit">
-                        <button type="button" class="cancel-button" onclick="hideCommentUpdateForm(event)">Annuler</button>
+                        <label for="contenu-<?= $listComments['id_commentaires']; ?>">Contenu</label>
+                        <input type="text" name="contenu" id="contenu-<?= $listComments['id_commentaires']; ?>"
+                            class="contenu" value="<?= $listComments['contenu']; ?>">
+                        <input type="submit" value="Envoyer">
+                        <button type="button" class="cancel-button"
+                            onclick="hideCommentForm('<?= $listComments['id_commentaires']; ?>')">Annuler</button>
                     </form>
-                    <!-- A REGLER -->
-                    <button class="btnComment" onclick="showFormComment(event)">Modifier</button>
+                    <button id="btn-comment-<?= $listComments['id_commentaires']; ?>" class="btnComment"
+                        onclick="toggleCommentForm('<?= $listComments['id_commentaires']; ?>')">Modifier</button>
                 </div>
             <?php endforeach; ?>
         </div>
