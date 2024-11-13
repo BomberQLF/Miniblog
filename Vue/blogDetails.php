@@ -54,6 +54,11 @@
 
             if ($post): ?>
                 <div class="post-detail">
+                    <?php if (!empty($post['photo_post'])): ?>
+                        <img src="/Miniblog/uploads/<?php echo htmlspecialchars($post['photo_post']); ?>"
+                            alt="Image associée au billet" class="post-image">
+                    <?php endif; ?>
+
                     <h2><?php echo htmlspecialchars($post['titre']); ?></h2>
                     <p><?php echo htmlspecialchars($post['contenu']); ?></p>
                     <div class="post-meta">
@@ -75,8 +80,7 @@
 
                                 <?php if (isset($echecAjout)) {
                                     echo $echecAjout;
-                                }
-                                ?>
+                                } ?>
                             </div>
                         </form>
                     <?php endif; ?>
@@ -101,17 +105,16 @@
 
                                         <p><?php echo htmlspecialchars($comment['contenu']); ?></p>
                                         <small>Posté par : <?php echo htmlspecialchars($comment['prenom'] . ' ' . $comment['nom']); ?>
-                                            le
-                                            <?php echo htmlspecialchars($comment['date_post']); ?></small>
+                                            le <?php echo htmlspecialchars($comment['date_post']); ?></small>
 
                                         <?php if (isAdmin()): ?>
                                             <a
                                                 href="/Miniblog/Controller/index.php?action=deleteComment&id=<?php echo $comment['id_commentaires']; ?>">Supprimer</a>
                                         <?php endif; ?>
+
                                         <?php if (isset($error)) {
                                             echo $error;
-                                        }
-                                        ?>
+                                        } ?>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

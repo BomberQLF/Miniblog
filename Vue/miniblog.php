@@ -13,11 +13,11 @@
     <section class="hero_section">
         <header>
             <?php if (isLoggedIn()): ?>
-                <?php if(!empty($comments)): ?>
+                <?php if (!empty($comments)): ?>
                     <div class="logo">
-                        <img src="/Miniblog/uploads/<?= $comments['photo_profile']?>" alt="">
+                        <img src="/Miniblog/uploads/<?= $comments['photo_profile'] ?>" alt="">
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
             <?php endif; ?>
             <nav>
                 <ul>
@@ -59,7 +59,8 @@
     <main>
         <section class="recent_post">
             <div class="big_text">Mes <span>articles</span> récents sur les abeilles pour tout savoir sur les
-                <span>ruches</span> et <span>l’apiculture</span></div>
+                <span>ruches</span> et <span>l’apiculture</span>
+            </div>
             <div class="big_text">Découvertes autour du monde des abeilles et de la <span>pollinisation</span>
             </div>
         </section>
@@ -70,6 +71,12 @@
                 <a class="linkBlog"
                     href="/Miniblog/Controller/index.php?action=blogDetails&id=<?php echo $post['id_billets']; ?>">
                     <div class="post" id="<?php echo $post['id_billets']; ?>">
+                        <!-- Affiche la photo si elle existe -->
+                        <?php if (!empty($post['photo_post'])): ?>
+                            <img src="/Miniblog/uploads/<?php echo htmlspecialchars($post['photo_post']); ?>"
+                                alt="Image de <?php echo htmlspecialchars($post['titre']); ?>" class="post-image">
+                        <?php endif; ?>
+
                         <h2><?= htmlspecialchars($post['titre']); ?></h2>
                         <p class="post-content"><?= htmlspecialchars($post['contenu']); ?></p>
                         <span>Voir plus</span>

@@ -46,8 +46,16 @@
         <?php foreach ($allPosts as $totalPosts): ?>
             <div class="post-item">
                 <h2 class="post-title"><?= htmlspecialchars($totalPosts['titre']) ?></h2>
+
+                <!-- Afficher la photo si elle existe -->
+                <?php if (!empty($totalPosts['photo_post'])): ?>
+                    <img src="/Miniblog/uploads/<?= htmlspecialchars($totalPosts['photo_post']) ?>" alt="Photo du billet"
+                        class="post-photo">
+                <?php endif; ?>
+
                 <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
                 <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?></small>
+
                 <?php if (isAdmin()): ?>
                     <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
                         class="delete-button">Supprimer</a>
