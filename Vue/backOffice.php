@@ -147,6 +147,7 @@
                         <input type="submit">
                         <button type="button" class="cancel-button" onclick="hideCommentUpdateForm(event)">Annuler</button>
                     </form>
+                    <!-- A REGLER -->
                     <button class="btnComment" onclick="showFormComment(event)">Modifier</button>
                 </div>
             <?php endforeach; ?>
