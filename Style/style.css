@@ -829,3 +829,17 @@ hr {
 .updateComments {
     display: none;
 }
+
+.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.post-photo {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
