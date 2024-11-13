@@ -6,7 +6,6 @@ function showUpdateForm(userId) {
       // Si le formulaire est déjà visible, on le cache
       formContainer.style.display = "none";
   } else {
-      // Sinon, on l'affiche
       formContainer.style.display = "block";
   }
 }
@@ -20,17 +19,36 @@ function showPostUpdateForm(postId) {
   const formContainer = document.getElementById(`update-form-post-${postId}`);
 
   if (formContainer.style.display === "block") {
-      // Si le formulaire est déjà visible, on le cache
       formContainer.style.display = "none";
   } else {
-      // Sinon, on l'affiche
       formContainer.style.display = "block";
   }
 }
 
 function hidePostUpdateForm(postId) {
   const formContainer = document.getElementById(`update-form-post-${postId}`);
-  formContainer.style.display = "none"; // Cache le formulaire
+  formContainer.style.display = "none";
+}
+
+function toggleCommentForm(commentId) {
+  const formContainer = document.getElementById(`update-form-${commentId}`);
+  const btnComment = document.querySelector('.btnComment');
+
+  // Vérifier si le formulaire est déjà visible
+  if (formContainer.style.display === "block") {
+      formContainer.style.display = "none";
+      btnComment.style.display = "none";
+  } else {
+    formContainer.style.display = "block";
+  }
+}
+
+function hideCommentForm(commentId) {
+  const formContainer = document.getElementById(`update-form-${commentId}`);
+  const btnComment = document.querySelector('.btnComment');
+
+  formContainer.style.display = "none";
+  btnComment.style.display = "block";
 }
 
 // Code pour limiter le nombre de char et cacher le surplus du post
