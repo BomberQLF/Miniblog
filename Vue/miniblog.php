@@ -48,7 +48,7 @@
                 <p>Ce mini-blog sur les abeilles est un projet universitaire réalisé dans le cadre de l’apprentissage du
                     développement web. Il permet d’explorer les bases du PHP et du MVC tout en mettant en avant un sujet
                     captivant.</p>
-                <p style="margin-top: 2rem;"><em>Réalisé par Tom MURPHY</em></p>
+                <p style="margin-top: 2rem;"><em class="credit">Réalisé par Tom MURPHY</em></p>
             </div>
             <div class="hero_img_container">
                 <img src="/Miniblog/assets/bee.png" alt="">
@@ -58,13 +58,17 @@
 
     <main>
         <section class="recent_post">
-            <div class="big_text">Mes <span>articles</span> récents sur les abeilles pour tout savoir sur les
-                <span>ruches</span> et <span>l’apiculture</span>
+            <div class="big_text">Mes <span><em class="big-text-hero">articles</em></span> récents sur les abeilles pour
+                tout savoir sur les
+                <span><em class="big-text-hero">ruches</em></span> et <span><em
+                        class="big-text-hero">l’apiculture</em></span>
             </div>
-            <div class="big_text">Découvertes autour du monde des abeilles et de la <span>pollinisation</span>
+            <div class="big_text">Découvertes autour du monde des abeilles et de la <span><em
+                        class="big-text-hero">pollinisation</em></span>
             </div>
         </section>
 
+        <div class="thanks"><em>Bonne lecture...</em></div>
         <section class="blog_section">
             <?php $lastPosts = showThreePost(); ?>
             <?php foreach ($lastPosts as $post): ?>
@@ -85,7 +89,6 @@
                 </a>
             <?php endforeach; ?>
         </section>
-        <div class="thanks"><em>Thanks for reading</em></div>
     </main>
 </body>
 

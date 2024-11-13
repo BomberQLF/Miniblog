@@ -8,20 +8,79 @@
 
 :root {
     --font-stack: 'Montserrat', sans-serif;
-    --back-color: #1b2934;
-    --title-color: #187335;
-    --text-color: #c8b625;
-    --input-background: #2b3a47;
-    --button-color: #187335;
-    --button-text-color: #ffffff;
-    --accent-color: #888888; /* Gray for borders and accents */
-
 }
 
+/* Couleur pour le background global */
 body {
-    font-family: var(--font-stack);
+    background-color: #1b1c1d;
+    color: #dee3e7; 
+    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: var(--back-color);
+}
+
+/* Couleur pour le texte */
+h1, h2, h3, h4, h5, h6, p, span, a {
+    color: #dee3e7;
+}
+
+h1{
+    background: linear-gradient(90.01deg, #636aca -8.79%, #dee3e7 51.99%, rgba(255, 255, 255, 0) 109.94%) text;
+    color: transparent;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #dee3e7;
+}
+
+/* Couleur pour les boutons */
+button, .btn {
+    background-color: #636aca;
+    color: #dee3e7;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover, .btn:hover {
+    background-color: #dee3e7;
+    color: #1b1c1d;
+}
+
+/* Couleur des bordures */
+.border {
+    border: 1px solid #636aca;
+}
+
+/* Couleur des éléments spécifiques */
+header, footer, nav {
+    background-color: #1b1c1d;
+    color: #dee3e7;
+}
+
+/* Formulaires */
+input, textarea, select {
+    background-color: #1b1c1d;
+    color: #dee3e7;
+    border: 1px solid #636aca;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #dee3e7;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid #636aca;
+}
+
+.credit {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #636aca;
+}
+
+.big-text-hero {
+    background: linear-gradient(90.01deg, #636aca -8.79%, #dee3e7 51.99%, rgba(255, 255, 255, 0.232) 109.94%) text;
+    color: transparent;
 }
 
 /* Header */
@@ -34,7 +93,7 @@ header {
 
 main {
     padding: 4%;
-    background-color: var(--back-color);
+
 }
 
 .hero_section {
@@ -43,7 +102,7 @@ main {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    background-color: var(--back-color);
+    background-color: #1b1c1d;
 }
 
 header {
@@ -61,7 +120,6 @@ header {
     margin-bottom: 40px;
     text-align: center;
     text-transform: uppercase;
-    color: var(--title-color);
 }
 
 nav {
@@ -81,7 +139,6 @@ nav ul {
 }
 
 nav ul li a {
-    color: var(--text-color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -107,7 +164,6 @@ nav ul li a {
 }
 
 .right-nav a {
-    color: var(--text-color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -128,12 +184,10 @@ nav ul li a {
     margin-left: 6rem;
 }
 .hero_title_container > h1 {
-    color: var(--title-color);
     text-transform: uppercase;
     font-size: 5rem;
 }
 p {
-    color: var(--text-color);
     font-size: 1.5rem;
 }
 
@@ -141,15 +195,11 @@ p {
 
 /* Big TEXT SECTION */
 .recent_post {
-    height: 100vh;
+    height: 80vh;
 }
 .big_text {
     font-size: 5rem;
     font-weight: 700;
-    color: var(--title-color);
-}
-.big_text > span {
-    color: var(--text-color);
 }
 
 /* Blog Section */
@@ -158,16 +208,15 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
     margin-top: 20px;
+    margin-bottom: 4rem;
 }
 
 /* Post Card */
 .post {
-    background-color: var(--title-color);
     padding: 40px;
     border-radius: 12px;
     border: 1px solid #6060605e;
     transition: transform 0.3s ease;
-    color: var(--secondary-color);
 }
 
 .post:hover {
@@ -177,48 +226,41 @@ p {
 .post h2 {
     margin: 0 0 30px;
     font-size: 1.6rem;
-    color: var(--text-color);
 }
 
 .post p {
     margin: 0 0 15px;
     line-height: 1.6;
     font-size: 0.9rem;
-    color: var(--back-color);
     font-weight: 400;
 }
 
 .post small {
     display: block;
     margin-top: 20px;
-    color: var(--text-color);
     font-size: 0.8rem;
-    border-top: 1px solid var(--back-color);
     padding-top: 10px;
 }
 
 /* Style for the Date */
 .post small::before {
     content: "| ";
-    color: var(--back-color);
 }
 
 a {
     display: inline-block;
     margin: 5px 0;
     text-decoration: none;
-    color: var(--hover-color);
 }
 
 .thanks {
-    font-family: var(--font-stack);
-    color: var(--accent-color);
     font-size: 5rem;
     margin-top: 6rem;
     text-transform: uppercase;
     letter-spacing: 10px;
-    background: linear-gradient(90.01deg, #187335 -8.79%, rgb(94, 115, 24)51.99%, rgba(255, 255, 255, 0) 109.94%) text;
+    background: linear-gradient(90.01deg, #636aca -8.79%, #dee3e7 51.99%, rgba(255, 255, 255, 0) 109.94%) text;
     color: transparent;
+    margin-bottom: 2rem;
 }
 
 /* BLOG DETAILS */
@@ -228,7 +270,6 @@ a {
 }
 .introduction > p {
     font-size: 1.1rem;
-    color: var(--title-color);
     line-height: 28px;
 }
 
@@ -236,27 +277,19 @@ a {
     padding-left: 3rem;
     margin-bottom: 5rem;
     width: 75%;
-    border-left: 1px solid var(--accent-color);
 }
 .post-detail > h2 {
     font-size: 2rem;
-    color: var(--text-color);
 }
 .post-detail > p {
-    color: var(--title-color);
     font-size: 1.2rem;
 }
 
-.post-meta > small > em {
-    color: var(--text-color);
-}
 
 /* PAGE PROFILE */
 
 .bodyProfile {
-    background-color: var(--back-color);
     font-family: Arial, sans-serif;
-    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,7 +313,6 @@ a {
 }
 
 .profile-title {
-    color: var(--title-color);
     font-size: 26px;
     margin-bottom: 25px;
 }
@@ -297,28 +329,20 @@ a {
 
 .detail-label {
     font-weight: bold;
-    color: var(--title-color);
 }
 
 .logout-link {
     display: inline-block;
     margin-top: 25px;
-    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
-    border: 2px solid var(--text-color);
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.logout-link:hover {
-    background-color: var(--text-color);
-    color: var(--back-color);
-}
 
 .profile-subtitle {
-    color: var(--title-color);
     margin: 30px 0 20px;
 }
 
@@ -327,15 +351,12 @@ a {
     padding: 10px;
     border-radius: 5px;
     background-color: #34495e;
-    color: var(--text-color);
     border: 1px solid #3a4a5a;
     width: 100%;
     max-width: 300px;
 }
 
 .upload-button {
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
@@ -345,16 +366,10 @@ a {
     max-width: 150px;
 }
 
-.upload-button:hover {
-    background-color: #145a28;
-}
-
 /* LOGIN */
 
 .login-body {
-    background-color: var(--back-color);
     font-family: Arial, sans-serif;
-    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -373,14 +388,12 @@ a {
 
 .login-title {
     font-size: 26px;
-    color: var(--title-color);
     margin-bottom: 35px;
 }
 
 .login-label {
     display: block;
     font-weight: bold;
-    color: var(--title-color);
     text-align: left;
     margin-bottom: 8px;
     font-size: 14px;
@@ -392,10 +405,7 @@ a {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--input-background);
-    color: var(--text-color);
     font-size: 16px;
-    border: 2px solid var(--title-color);
 }
 
 .login-button {
@@ -403,8 +413,6 @@ a {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -419,9 +427,7 @@ a {
 /* SIGNUP */
 
 .signup-body {
-    background-color: var(--back-color);
     font-family: Arial, sans-serif;
-    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -447,7 +453,6 @@ a {
 .signup-label {
     display: block;
     font-weight: bold;
-    color: var(--title-color);
     text-align: left;
     margin-bottom: 8px;
     font-size: 14px;
@@ -459,10 +464,7 @@ a {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--input-background);
-    color: var(--text-color);
     font-size: 16px;
-    border: 2px solid var(--title-color);
 }
 
 .signup-input::placeholder {
@@ -474,8 +476,6 @@ a {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -490,9 +490,8 @@ a {
 /* CRÉER UN POST */
 
 .create-post-body {
-    background-color: var(--back-color);
+    background-color: #1b1c1d;
     font-family: Arial, sans-serif;
-    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -511,14 +510,12 @@ a {
 
 .create-post-title {
     font-size: 26px;
-    color: var(--title-color);
     margin-bottom: 25px;
 }
 
 .create-post-label {
     display: block;
     font-weight: bold;
-    color: var(--title-color);
     text-align: left;
     margin-bottom: 8px;
     font-size: 14px;
@@ -531,10 +528,7 @@ a {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--input-background);
-    color: var(--text-color);
     font-size: 16px;
-    border: 2px solid var(--title-color);
 }
 
 .create-post-input::placeholder,
@@ -547,8 +541,6 @@ a {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -562,17 +554,14 @@ a {
 /* COMMENTAIRE */
 
 .comment_part {
-    background-color: var(--background-color);
     padding: 30px;
     border-radius: 10px;
     max-width: 600px;
-    color: var(--text-color);
     font-family: Arial, sans-serif;
 }
 
 .comment_part h2 {
     font-size: 24px;
-    color: var(--title-color);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -584,7 +573,6 @@ a {
 .comment_part label {
     display: block;
     font-weight: bold;
-    color: var(--title-color);
     margin-bottom: 5px;
 }
 
@@ -593,8 +581,6 @@ a {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--input-background);
-    color: var(--text-color);
     font-size: 16px;
     margin-bottom: 15px;
     resize: vertical;
@@ -608,8 +594,6 @@ a {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--button-color);
-    color: var(--button-text-color);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -625,8 +609,6 @@ a {
 }
 
 .comment {
-    background-color: var(--comment-bg);
-    border: 1px solid var(--comment-border);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
@@ -639,12 +621,10 @@ a {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--title-color);
 }
 
 .comment p {
     margin: 0 0 10px;
-    color: var(--text-color);
 }
 
 .comment small {
@@ -676,38 +656,28 @@ a {
     margin-top: 11rem;
     padding: 20px;
     font-size: 3rem;
-    color: var(--title-color);
 }
 
 .archive-container h1 {
     font-size: 28px;
-    color: var(--title-color);
     margin-bottom: 20px;
     text-align: center;
 }
 
 .post-item {
-    background-color: var(--post-bg);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    border: 1px solid var(--post-border);
-}
-
-.post-title {
-    color: var(--title-color);
 }
 
 .post-item h1 {
     font-size: 22px;
-    color: var(--title-color);
     margin-bottom: 10px;
 }
 
 .post-item p {
     font-size: 16px;
     line-height: 1.5;
-    color: var(--text-color);
     margin-bottom: 10px;
 }
 
@@ -722,8 +692,6 @@ a {
     display: inline-block;
     padding: 8px 12px;
     font-size: 14px;
-    color: var(--button-text-color);
-    background-color: var(--button-color);
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -739,7 +707,6 @@ hr {
 }
 .backoffice-title {
     font-size: 28px;
-    color: var(--title-color);
     text-align: center;
     margin: 170px 0 0 0;
     width: 100%;
@@ -756,7 +723,6 @@ hr {
 .left-column,
 .right-column {
     flex: 1;
-    background-color: var(--section-bg);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -765,14 +731,12 @@ hr {
 
 .section-title {
     font-size: 22px;
-    color: var(--title-color);
     margin-bottom: 15px;
 }
 
 .user-item,
 .post-item {
     padding: 15px;
-    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -781,14 +745,11 @@ hr {
 .post-content,
 .post-date {
     font-size: 16px;
-    color: var(--text-color);
     margin-bottom: 5px;
 }
 
 .delete-user,
 .delete-post {
-    color: var(--button-text-color);
-    background-color: var(--title-color);
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -803,8 +764,6 @@ hr {
 }
 
 .edit-button {
-    color: var(--button-text-color);
-    background-color: var(--button-color);
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
