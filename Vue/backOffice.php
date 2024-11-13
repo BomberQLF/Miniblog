@@ -39,7 +39,7 @@
             </ul>
         </div>
     </header>
-    <h1 class="backoffice-title">BACKOFFICE</h1>
+    <h1 class="backoffice-title" style="margin-bottom: 4rem;">BACKOFFICE</h1>
     <hr>
     <div class="backoffice-container">
         <div class="left-column">

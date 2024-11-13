@@ -645,24 +645,24 @@ a {
 
 .archive-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    max-width: 1140px;
     padding: 20px;
     margin: auto;
+    gap: 2rem;
 }
 
 /* Chaque élément de billet */
 .post-item {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     background-color: #ffffff20;
-    border-radius: 8px;
     padding: 20px;
-    width: 100%;
-    max-width: 800px; /* Limite la largeur des billets */
-    margin: 20px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-basis: 32%; 
 }
 
 /* Effet au survol */
@@ -692,6 +692,13 @@ a {
 .post-body {
     margin-bottom: 16px;
     text-align: justify;
+    flex-grow: 2;
+}
+
+.post-header, .post-body, .post-actions {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 /* Texte du billet */
@@ -712,6 +719,7 @@ a {
 /* Section d'actions pour l'admin */
 .post-actions {
     text-align: right;
+    margin-top: auto;
 }
 
 .delete-button {
