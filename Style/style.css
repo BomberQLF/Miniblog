@@ -786,7 +786,7 @@ a {
 
 /* Liens */
 .delete-user, .delete-post, .delete-comment {
-    color: #636aca; /* Violet pour les liens */
+    color: rgb(255, 48, 48); /* Violet pour les liens */
     text-decoration: none;
     font-size: 14px;
     margin-right: 10px;
