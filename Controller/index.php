@@ -238,7 +238,7 @@ switch ($action) {
                 $id_comment = intval($_GET['id']);
                 $commentaire = showCommentById($id_comment);
                 deleteComment($id_comment);
-                include('../Vue/messageDeleteComment.php');
+                include('../Vue/archives.php');
             }
         } else {
             $error = "Vous n'avez pas les permissions.";
