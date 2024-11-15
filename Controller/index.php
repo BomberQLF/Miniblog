@@ -208,7 +208,6 @@ switch ($action) {
         include('../Vue/blogDetails.php');
         break;
 
-
     case 'postComment':
         if (isLoggedIn()) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
