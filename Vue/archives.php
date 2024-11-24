@@ -71,9 +71,9 @@
                         <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
                             class="delete-button">Supprimer</a>
                     </div>
-                <?php endif; ?>
+                <?php endif;?>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach;?>
     </div>
 </body>
 
