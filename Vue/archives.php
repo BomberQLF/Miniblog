@@ -62,12 +62,12 @@
                 <div class="post-body">
                     <p class="post-content"><?= htmlspecialchars($totalPosts['contenu']) ?></p>
                     <small class="post-date"><?= htmlspecialchars($totalPosts['date_post']) ?></small>
+                    <a href="/Miniblog/Controller/index.php?action=blogDetails&id=<?= $totalPosts['id_billets'];?>">Voir plus</a>
                 </div>
 
                 <!-- Bouton de suppression pour l'admin -->
                 <?php if (isAdmin()): ?>
                     <div class="post-actions">
-                        <a href="/Miniblog/Controller/index.php?action=blogDetails&id=<?= $totalPosts['id_billets'];?>">Voir plus</a>
                         <a href="/Miniblog/Controller/index.php?action=deletePost&id=<?= htmlspecialchars($totalPosts['id_billets']) ?>"
                             class="delete-button">Supprimer</a>
                     </div>
